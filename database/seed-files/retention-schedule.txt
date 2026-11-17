@@ -1,0 +1,9 @@
+RECORDS RETENTION SCHEDULE — ARCHIVED SAMPLE
+
+DEMONSTRATION RECORD
+
+This placeholder is an example of a record retained in the DocuVault archive.
+It demonstrates the archived document status and restore workflow.
+
+Record category: Administrative Records
+Status: Archived sample

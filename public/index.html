@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#28231f">
+  <meta name="description" content="DocuVault — a secure, organized home for institutional documents.">
+  <title>Sign in · DocuVault</title>
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/login.js" defer></script>
+</head>
+<body class="auth-body">
+  <main class="auth-shell">
+    <section class="auth-story" aria-label="About DocuVault">
+      <div class="auth-story-top">
+        <a class="brand brand-light" href="/" aria-label="DocuVault home">
+          <img src="/assets/logo.svg" alt="" class="brand-mark">
+          <span>docu<span class="brand-accent">vault</span></span>
+        </a>
+        <span class="eyebrow eyebrow-light">INSTITUTIONAL DOCUMENTS, IN ORDER</span>
+      </div>
+      <div class="story-copy">
+        <div class="story-kicker"><span class="kicker-dot"></span> A calmer way to manage records</div>
+        <h1>Everything important.<br><em>Right where it belongs.</em></h1>
+        <p>Keep university documents organized, find what you need quickly, and make sure the right people see the right records.</p>
+        <div class="story-benefits">
+          <div class="story-benefit">
+            <span class="benefit-icon">✳</span>
+            <div><strong>Thoughtful organization</strong><small>Categories, tags, search, and clear document status.</small></div>
+          </div>
+          <div class="story-benefit">
+            <span class="benefit-icon">⌑</span>
+            <div><strong>Access with purpose</strong><small>Role-based permissions checked by the server.</small></div>
+          </div>
+          <div class="story-benefit">
+            <span class="benefit-icon">↗</span>
+            <div><strong>A dependable history</strong><small>Activity records, expiry review, and archiving.</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="story-footer"><span>DOCUVAULT · UNIVERSITY RECORDS PORTAL</span><span>BUILT FOR CLEARER WORKFLOWS</span></div>
+      <div class="story-shape story-shape-one"></div>
+      <div class="story-shape story-shape-two"></div>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-panel-inner">
+        <div class="mobile-brand">
+          <img src="/assets/logo.svg" alt="" class="brand-mark"><span>docu<span class="brand-accent">vault</span></span>
+        </div>
+        <div class="auth-heading">
+          <span class="eyebrow">YOUR DOCUMENT WORKSPACE</span>
+          <h2 id="auth-title">Welcome back.</h2>
+          <p id="auth-subtitle">Sign in to access your secure document library.</p>
+        </div>
+
+        <div class="auth-tabs" role="tablist" aria-label="Account access">
+          <button class="auth-tab is-active" type="button" role="tab" aria-selected="true" data-auth-mode="login">Sign in</button>
+          <button class="auth-tab" type="button" role="tab" aria-selected="false" data-auth-mode="register">Create student account</button>
+        </div>
+
+        <form id="login-form" class="auth-form" autocomplete="on">
+          <label class="field-label" for="login-email">Email address</label>
+          <div class="input-wrap"><span class="input-symbol">@</span><input id="login-email" name="email" type="email" placeholder="name@institution.edu" autocomplete="username" required></div>
+          <div class="field-row"><label class="field-label" for="login-password">Password</label><span class="field-hint">Your account is protected</span></div>
+          <div class="input-wrap"><span class="input-symbol">●</span><input id="login-password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required><button type="button" class="password-toggle" aria-label="Show password" data-toggle-password="login-password">Show</button></div>
+          <div class="form-error" id="login-error" role="alert" aria-live="polite"></div>
+          <button class="button button-primary button-full" type="submit"><span>Sign in to DocuVault</span><span class="button-arrow">↗</span></button>
+        </form>
+
+        <form id="register-form" class="auth-form" hidden autocomplete="on">
+          <label class="field-label" for="register-name">Full name</label>
+          <div class="input-wrap"><span class="input-symbol">✳</span><input id="register-name" name="name" type="text" placeholder="Your full name" autocomplete="name" minlength="2" required></div>
+          <label class="field-label" for="register-email">Email address</label>
+          <div class="input-wrap"><span class="input-symbol">@</span><input id="register-email" name="email" type="email" placeholder="name@institution.edu" autocomplete="email" required></div>
+          <label class="field-label" for="register-password">Create password</label>
+          <div class="input-wrap"><span class="input-symbol">●</span><input id="register-password" name="password" type="password" placeholder="At least 10 characters" autocomplete="new-password" minlength="10" required><button type="button" class="password-toggle" aria-label="Show password" data-toggle-password="register-password">Show</button></div>
+          <p class="field-hint register-note">New self-registered accounts receive the Student role. Administrators can create Staff accounts.</p>
+          <div class="form-error" id="register-error" role="alert" aria-live="polite"></div>
+          <button class="button button-primary button-full" type="submit"><span>Create student account</span><span class="button-arrow">↗</span></button>
+        </form>
+
+        <div class="demo-access">
+          <div class="demo-access-heading"><span>EXPLORE THE DEMO</span><span class="demo-line"></span></div>
+          <p>Try a role to see how the workspace changes.</p>
+          <div class="demo-buttons">
+            <button type="button" class="demo-chip" data-demo-user="admin"><span class="demo-chip-dot dot-rust"></span>Admin</button>
+            <button type="button" class="demo-chip" data-demo-user="staff"><span class="demo-chip-dot dot-olive"></span>Staff</button>
+            <button type="button" class="demo-chip" data-demo-user="student"><span class="demo-chip-dot dot-gold"></span>Student</button>
+          </div>
+        </div>
+        <div class="auth-legal">By continuing, you agree to use this academic demo responsibly. <span>© DocuVault</span></div>
+      </div>
+    </section>
+  </main>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

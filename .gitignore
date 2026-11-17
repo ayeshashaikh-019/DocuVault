@@ -1,0 +1,33 @@
+
+# Dependencies
+node_modules/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Database files
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+database/*.db-*
+database/*.sqlite-*
+
+# Private uploaded documents
+storage/private/*
+!storage/private/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json

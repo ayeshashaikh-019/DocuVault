@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "DocuVault: Start development server",
+      "type": "shell",
+      "command": "npm run dev",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "DocuVault: Run tests",
+      "type": "shell",
+      "command": "npm test",
+      "problemMatcher": []
+    }
+  ]
+}

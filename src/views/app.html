@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f0e8">
+  <meta name="description" content="DocuVault secure document management workspace.">
+  <title>Workspace · DocuVault</title>
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand sidebar-brand" href="/app"><img src="/assets/logo.svg" alt="" class="brand-mark"><span>docu<span class="brand-accent">vault</span></span></a>
+      <div class="workspace-switcher"><span class="workspace-monogram">H</span><span class="workspace-label"><strong>HITMS Workspace</strong><small>Institutional records</small></span><span class="switcher-chevron">⌄</span></div>
+      <div class="nav-section-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item is-active" type="button" data-view="overview"><span class="nav-icon">◫</span><span>Overview</span></button>
+        <button class="nav-item" type="button" data-view="documents"><span class="nav-icon">▤</span><span>Documents</span><span class="nav-count" id="nav-document-count">—</span></button>
+        <button class="nav-item" type="button" data-view="activity" id="nav-activity"><span class="nav-icon">◷</span><span>Activity history</span></button>
+      </nav>
+      <div class="nav-section-label nav-section-spaced">MANAGE</div>
+      <nav class="main-nav" aria-label="Management navigation">
+        <button class="nav-item" type="button" data-view="admin" id="nav-admin" hidden><span class="nav-icon">♧</span><span>People & access</span></button>
+        <button class="nav-item" type="button" id="nav-archive" data-view="documents" data-status-shortcut="archived"><span class="nav-icon">▣</span><span>Archive</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><span class="note-spark">✳</span><strong>Good records. Better decisions.</strong><p>Keep information clear, current, and in the right hands.</p></div>
+        <div class="sidebar-user">
+          <div class="avatar avatar-rust" id="sidebar-avatar">DV</div>
+          <div class="sidebar-user-copy"><strong id="sidebar-name">Loading…</strong><small id="sidebar-role">Workspace member</small></div>
+          <button type="button" class="icon-button logout-button" id="logout-button" aria-label="Sign out" title="Sign out">↗</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="mobile-menu" type="button" aria-label="Open navigation">☰</button>
+        <div class="breadcrumb"><span>Workspace</span><b>/</b><strong id="breadcrumb-current">Overview</strong></div>
+        <div class="topbar-actions">
+          <div class="topbar-date" id="topbar-date">Today</div>
+          <button class="topbar-avatar avatar avatar-rust" id="topbar-avatar" type="button" aria-label="Account menu">DV</button>
+        </div>
+      </header>
+
+      <div class="content-wrap">
+        <section class="view-panel is-visible" id="view-overview">
+          <div class="page-heading page-heading-split">
+            <div><span class="eyebrow" id="welcome-eyebrow">YOUR WORKSPACE</span><h1 id="welcome-title">Good morning.</h1><p>Here’s what’s happening across your document library.</p></div>
+            <button class="button button-primary" id="quick-upload" type="button"><span class="button-plus">＋</span> Upload document</button>
+          </div>
+          <div class="stat-grid" id="stat-grid">
+            <article class="stat-card stat-card-featured"><div class="stat-top"><span class="stat-label">Documents in view</span><span class="stat-icon">▤</span></div><strong class="stat-value" id="stat-total">—</strong><div class="stat-foot"><span class="stat-foot-dot"></span> Accessible to your role</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Active records</span><span class="stat-icon icon-olive">✓</span></div><strong class="stat-value" id="stat-active">—</strong><div class="stat-foot">Current and available</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Needs attention</span><span class="stat-icon icon-gold">◷</span></div><strong class="stat-value" id="stat-expired">—</strong><div class="stat-foot">Expired documents</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Archived</span><span class="stat-icon icon-ink">▣</span></div><strong class="stat-value" id="stat-archived">—</strong><div class="stat-foot">Kept for reference</div></article>
+          </div>
+          <div class="dashboard-grid">
+            <section class="surface-card recent-card">
+              <div class="section-heading"><div><span class="eyebrow">YOUR LIBRARY</span><h2>Recently updated</h2></div><button class="text-link" type="button" data-view="documents">View all <span>↗</span></button></div>
+              <div class="table-wrap"><table class="data-table"><thead><tr><th>DOCUMENT</th><th>CATEGORY</th><th>UPDATED</th><th>STATUS</th><th></th></tr></thead><tbody id="recent-documents"><tr><td colspan="5" class="table-empty">Preparing your library…</td></tr></tbody></table></div>
+            </section>
+            <section class="surface-card attention-card">
+              <div class="section-heading"><div><span class="eyebrow">UP NEXT</span><h2>Expiry watch</h2></div><span class="attention-mark">◷</span></div>
+              <p class="card-description">Documents with an expiry date in the next 14 days.</p>
+              <div class="expiry-list" id="expiry-list"><div class="empty-state compact-empty"><span>✳</span><p>No upcoming expiries.</p></div></div>
+              <div class="attention-footer"><span class="tiny-dot"></span> Keep records reviewed and current</div>
+            </section>
+          </div>
+          <section class="surface-card category-card">
+            <div class="section-heading"><div><span class="eyebrow">ORGANIZED BY PURPOSE</span><h2>Document categories</h2></div><button class="text-link" type="button" data-view="documents">Browse library <span>↗</span></button></div>
+            <div class="category-grid" id="category-overview"><div class="category-placeholder">Categories will appear here.</div></div>
+          </section>
+        </section>
+
+        <section class="view-panel" id="view-documents">
+          <div class="page-heading page-heading-split">
+            <div><span class="eyebrow">THE DOCUMENT LIBRARY</span><h1>Documents</h1><p>Find, review, and manage the records you can access.</p></div>
+            <button class="button button-primary" id="documents-upload" type="button"><span class="button-plus">＋</span> Upload document</button>
+          </div>
+          <div class="library-toolbar surface-card">
+            <label class="search-field"><span>⌕</span><input id="document-search" type="search" placeholder="Search title, tag, or description…" aria-label="Search documents"></label>
+            <select id="category-filter" aria-label="Filter by category"><option value="">All categories</option></select>
+            <select id="status-filter" aria-label="Filter by status"><option value="">Current library</option><option value="active">Active</option><option value="expired">Expired</option><option value="archived">Archived</option></select>
+            <select id="visibility-filter" aria-label="Filter by visibility"><option value="">All visibility</option><option value="public">Public</option><option value="restricted">Restricted</option></select>
+          </div>
+          <div class="library-summary"><span id="document-result-count">Loading documents…</span><button class="clear-filters" id="clear-filters" type="button">Clear filters</button></div>
+          <section class="surface-card document-card"><div class="table-wrap"><table class="data-table document-table"><thead><tr><th>DOCUMENT</th><th>CATEGORY</th><th>ACCESS</th><th>ISSUED</th><th>EXPIRY</th><th>STATUS</th><th></th></tr></thead><tbody id="documents-table"><tr><td colspan="7" class="table-empty">Loading your documents…</td></tr></tbody></table></div><div class="empty-state" id="documents-empty" hidden><span>⌕</span><h3>No documents found</h3><p>Try another keyword or clear your filters.</p></div></section>
+        </section>
+
+        <section class="view-panel" id="view-activity">
+          <div class="page-heading"><span class="eyebrow">TRANSPARENCY & TRACEABILITY</span><h1>Activity history</h1><p>Review document actions recorded by the workspace.</p></div>
+          <section class="surface-card activity-card"><div class="section-heading"><div><span class="eyebrow">AUDIT TRAIL</span><h2>Recent activity</h2></div><span class="activity-live"><i></i> Recorded automatically</span></div><div class="table-wrap"><table class="data-table"><thead><tr><th>USER</th><th>ACTION</th><th>DOCUMENT / DETAILS</th><th>RESULT</th><th>TIME</th></tr></thead><tbody id="activity-table"><tr><td colspan="5" class="table-empty">Loading activity…</td></tr></tbody></table></div></section>
+        </section>
+
+        <section class="view-panel" id="view-admin">
+          <div class="page-heading"><span class="eyebrow">WORKSPACE CONFIGURATION</span><h1>People & access</h1><p>Manage accounts and configure category-level role permissions.</p></div>
+          <div class="admin-tabs" role="tablist" aria-label="Administration sections"><button class="admin-tab is-active" type="button" data-admin-tab="users">People</button><button class="admin-tab" type="button" data-admin-tab="permissions">Permissions</button><button class="admin-tab" type="button" data-admin-tab="categories">Categories</button></div>
+          <section class="admin-panel is-visible" id="admin-users"><div class="section-heading"><div><span class="eyebrow">ACCOUNT DIRECTORY</span><h2>Workspace people</h2></div><button class="button button-primary button-small" id="add-user-button" type="button">＋ Add user</button></div><div class="table-wrap"><table class="data-table"><thead><tr><th>PERSON</th><th>EMAIL</th><th>ROLE</th><th>DEPARTMENT</th><th>STATUS</th><th></th></tr></thead><tbody id="users-table"><tr><td colspan="6" class="table-empty">Loading users…</td></tr></tbody></table></div></section>
+          <section class="admin-panel" id="admin-permissions"><div class="section-heading"><div><span class="eyebrow">ROLE-BASED ACCESS CONTROL</span><h2>Permission matrix</h2></div><button class="button button-primary button-small" id="save-permissions" type="button">Save permissions</button></div><p class="card-description admin-intro">Choose what Staff and Students can do in each category. Administrator access is always unrestricted. Changes are enforced by the backend.</p><div class="permission-editor" id="permission-editor"><div class="table-empty">Loading permission matrix…</div></div></section>
+          <section class="admin-panel" id="admin-categories"><div class="section-heading"><div><span class="eyebrow">LIBRARY STRUCTURE</span><h2>Document categories</h2></div><button class="button button-primary button-small" id="add-category-button" type="button">＋ Add category</button></div><div class="category-admin-grid" id="category-admin-list"></div></section>
+        </section>
+      </div>
+      <footer class="app-footer"><span>DOCUVAULT <b>·</b> UNIVERSITY RECORDS PORTAL</span><span>Keep it clear. Keep it secure.</span></footer>
+    </main>
+  </div>
+  <div class="sidebar-scrim" id="sidebar-scrim"></div>
+  <dialog class="app-modal" id="app-modal" aria-labelledby="modal-title"><div class="modal-shell"><div class="modal-heading"><div><span class="eyebrow" id="modal-eyebrow">DOCUMENT DETAILS</span><h2 id="modal-title">Upload document</h2></div><button type="button" class="icon-button modal-close" id="modal-close" aria-label="Close dialog">×</button></div><div class="modal-content" id="modal-content"></div></div></dialog>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

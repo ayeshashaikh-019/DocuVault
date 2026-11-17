@@ -1,0 +1,10 @@
+DEPARTMENT RESEARCH SEMINAR NOTICE
+
+DEMONSTRATION RECORD
+
+The Department of Computer Science invites students and staff to a sample research seminar.
+This file is provided as placeholder content for the DocuVault lab project.
+
+Topic: Emerging Trends in Web Technologies
+Audience: Students and Department Staff
+Status: Active sample
